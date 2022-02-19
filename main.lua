@@ -30,7 +30,7 @@ local function IOGE_fake_script() -- counter.LocalScript
 workspace.Ignored.Drop.ChildAdded:Connect(function(child)
 if child:IsA("Part") then
 	local s = string.sub(child:WaitForChild("BillboardGui").TextLabel.Text, 2)
-	getgenv().Cash = getgenv().Cash += s
+	getgenv().Cash = getgenv().Cash + s
 end
 end)
 	
