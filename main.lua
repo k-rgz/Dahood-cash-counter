@@ -1,11 +1,13 @@
 --// https://discord.gg/ShY6aAu2y5 \\--
 -- Gui to lua
+getgenv().Cash = 0
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/ROBLOX/master/Games/Da%20Hood/AntiCheatBypass.lua"))()
 local ScreenGui = Instance.new("ScreenGui")
 local Fr = Instance.new("Frame")
 local counter = Instance.new("TextLabel")
 local UICorner = Instance.new("UICorner")
 local UICorner_2 = Instance.new("UICorner")
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Fr.Name = "Fr"
 Fr.Parent = ScreenGui
@@ -25,17 +27,15 @@ UICorner_2.Parent = Fr
 local function IOGE_fake_script() -- counter.LocalScript 
 	local script = Instance.new('LocalScript', counter)
 
-	getgenv().Cash = 0
-	for i, v in pairs(workspace.Ignored.Drop:GetChildren()) do
-		if v:IsA("Part") then
-			local s = string.sub(v.BillboardGui.TextLabel.Text, 2)
-			getgenv().Cash = getgenv().Cash += s
-			print(getgenv().Cash)
-		end
-	end
+workspace.Ignored.Drop.ChildAdded:Connect(function(child)
+if child:IsA("Part") then
+	local s = string.sub(child:WaitForChild("BillboardGui").TextLabel.Text, 2)
+	getgenv().Cash = getgenv().Cash += s
+end
+end)
 	
-	while true do
-		script.Parent.Text = getgenv().Cash
+	while wait(2) do
+		script.Parent.Text = "$"..getgenv().Cash
 	end
 end
 coroutine.wrap(IOGE_fake_script)()
