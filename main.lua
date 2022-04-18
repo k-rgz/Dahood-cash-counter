@@ -1,13 +1,11 @@
 --// https://discord.gg/ShY6aAu2y5 \\--
 -- Gui to lua
-getgenv().Cash = 0
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Stefanuk12/ROBLOX/master/Games/Da%20Hood/AntiCheatBypass.lua"))()
 local ScreenGui = Instance.new("ScreenGui")
 local Fr = Instance.new("Frame")
 local counter = Instance.new("TextLabel")
 local UICorner = Instance.new("UICorner")
 local UICorner_2 = Instance.new("UICorner")
-ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
+ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Fr.Name = "Fr"
 Fr.Parent = ScreenGui
